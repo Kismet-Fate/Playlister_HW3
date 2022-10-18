@@ -15,7 +15,9 @@ function DeleteListModal() {
     };
 
     useEffect(() => {
-        setPlaylistTitle(store.getPlaylistNameById(store.selectedListId));}, [store.selectedListId]);
+        if(store.selectedListId !== '')setPlaylistTitle(store.getPlaylistNameById(store.selectedListId));
+        else setPlaylistTitle('');
+      }, [store.selectedListId]);
 
     return (
         <div class='modal' id='delete-list-modal' data-animation='slideInOutLeft'>
