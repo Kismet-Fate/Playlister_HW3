@@ -37,7 +37,7 @@ export const useGlobalStore = () => {
         newListCounter: 0,
         listNameActive: false,
         selectedListId: '',
-        selectedSongIdx: -1,
+        selectedSongIndex: -1,
         selectedSong: { title: '', artist: '', youTubeId: '' },
     });
 
@@ -52,7 +52,7 @@ export const useGlobalStore = () => {
                     newListCounter: store.newListCounter,
                     listNameActive: false,
                     selectedListId: '',
-                    selectedSongIdx: -1,
+                    selectedSongIndex: -1,
                     selectedSong: { title: '', artist: '', youTubeId: '' },
                 });
             }
@@ -64,7 +64,7 @@ export const useGlobalStore = () => {
                     newListCounter: store.newListCounter,
                     listNameActive: false,
                     selectedListId: '',
-                    selectedSongIdx: -1,
+                    selectedSongIndex: -1,
                     selectedSong: { title: '', artist: '', youTubeId: '' },
                 });
             }
@@ -76,7 +76,7 @@ export const useGlobalStore = () => {
                     newListCounter: store.newListCounter + 1,
                     listNameActive: false,
                     selectedListId: '',
-                    selectedSongIdx: -1,
+                    selectedSongIndex: -1,
                     selectedSong: { title: '', artist: '', youTubeId: '' },
                 });
             }
@@ -88,7 +88,7 @@ export const useGlobalStore = () => {
                     newListCounter: store.newListCounter,
                     listNameActive: false,
                     selectedListId: '',
-                    selectedSongIdx: -1,
+                    selectedSongIndex: -1,
                     selectedSong: { title: '', artist: '', youTubeId: '' },
                 });
             }
@@ -100,7 +100,7 @@ export const useGlobalStore = () => {
                     newListCounter: store.newListCounter,
                     listNameActive: false,
                     selectedListId: '',
-                    selectedSongIdx: -1,
+                    selectedSongIndex: -1,
                     selectedSong: { title: '', artist: '', youTubeId: '' },
                 });
             }
@@ -112,7 +112,7 @@ export const useGlobalStore = () => {
                     newListCounter: store.newListCounter,
                     listNameActive: false,
                     selectedListId: '',
-                    selectedSongIdx: -1,
+                    selectedSongIndex: -1,
                     selectedSong: { title: '', artist: '', youTubeId: '' },
                 });
             }
@@ -124,7 +124,7 @@ export const useGlobalStore = () => {
                     newListCounter: store.newListCounter,
                     listNameActive: true,
                     selectedListId: '',
-                    selectedSongIdx: -1,
+                    selectedSongIndex: -1,
                     selectedSong: { title: '', artist: '', youTubeId: '' },
                 });
             }
@@ -136,7 +136,7 @@ export const useGlobalStore = () => {
                     newListCounter: store.newListCounter,
                     listNameActive: false,
                     selectedListId: payload,
-                    selectedSongIdx: -1,
+                    selectedSongIndex: -1,
                     selectedSong: { title: '', artist: '', youTubeId: '' },
                 });
             }
@@ -147,7 +147,7 @@ export const useGlobalStore = () => {
                     newListCounter: store.newListCounter,
                     listNameActive: false,
                     selectedListId: '',
-                    selectedSongIdx: payload.index,
+                    selectedSongIndex: payload.index,
                     selectedSong: payload.song,
                 });
             }
@@ -377,7 +377,7 @@ export const useGlobalStore = () => {
 
     store.addSong = (songIdx, song) => {
         const list = store.currentList;
-        if (store.selectedSongIdx !== -1) list.songs.splice(songIdx, 0, song);
+        if (store.selectedSongIndex !== -1) list.songs.splice(songIdx, 0, song);
         else list.songs.push(song);
         async function asyncUpdatePlaylist(playlist) {
             let response = await api.updatePlaylistById(playlist._id, playlist);
@@ -416,7 +416,7 @@ export const useGlobalStore = () => {
     };
 
     store.addEditSongTransaction = (editedSong) => {
-        const uneditedSong = store.currentList.songs[store.selectedSongIdx];
+        const uneditedSong = store.currentList.songs[store.selectedSongIndex];
         const uneditedSongClone = {
             title: uneditedSong.title,
             artist: uneditedSong.artist,
@@ -424,7 +424,7 @@ export const useGlobalStore = () => {
         };
         const transaction = new EditSong_Transaction(
             store,
-            store.selectedSongIdx,
+            store.selectedSongIndex,
             uneditedSongClone,
             editedSong
         );
