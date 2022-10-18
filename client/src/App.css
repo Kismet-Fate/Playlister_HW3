@@ -78,7 +78,10 @@ body {
   cursor: pointer;
   opacity: 100%;
 }
-
+.addList{
+  display: flex;
+  height: 550px;
+}
 .playlister-button:hover {
   cursor: pointer;
   color:black;
@@ -111,6 +114,7 @@ body {
   margin: 10px;
   padding: 20px;
   border-radius: 25px;
+  margin-left: 50px;
 }
 
 .list-card:aria-disabled,.list-card[aria-disabled] {
@@ -188,6 +192,21 @@ input {
   border-width: 5px;
   border-radius: 10px;
   border-style: groove;
+}
+
+.modal-root {
+  position: relative;
+  max-width: 800px;
+  max-height: 80vh;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  background: var(--swatch-complement);
+  cursor: default;
+  border-width: 2px;
+  border-color: black;
+  border-style: solid;
+  box-shadow: 5px 10px #888888;
 }
 
 .modal-dialog > * {
