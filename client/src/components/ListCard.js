@@ -31,8 +31,6 @@ function ListCard(props) {
             let _id = event.target.id;
             if (_id.indexOf('list-card-text-') >= 0)
                 _id = ('' + _id).substring('list-card-text-'.length);
-
-            // CHANGE THE CURRENT LIST
             store.setCurrentList(_id);
         }
     }
