@@ -10,10 +10,10 @@
     @author McKilla Gorilla
 */
 
-import axios from 'axios'
+import axios from 'axios';
 const api = axios.create({
-    baseURL: 'http://localhost:4000/api',
-})
+  baseURL: 'http://localhost:4000/api',
+});
 
 // THESE ARE ALL THE REQUESTS WE'LL BE MAKING, ALL REQUESTS HAVE A
 // REQUEST METHOD (like get) AND PATH (like /playlist). SOME ALSO
@@ -21,14 +21,20 @@ const api = axios.create({
 // WORK, AND SOME REQUIRE DATA, WHICH WE CALL THE payload, FOR WHEN
 // WE NEED TO PUT THINGS INTO THE DATABASE OR IF WE HAVE SOME
 // CUSTOM FILTERS FOR QUERIES
-export const getAllPlaylists = () => api.get(`/playlists`)
-export const getPlaylistPairs = () => api.get('playlistpairs')
-export const getPlaylistById = (id) => api.get(`/playlist/${id}`)
+export const getAllPlaylists = () => api.get(`/playlists`);
+export const getPlaylistPairs = () => api.get('playlistpairs');
+export const deletePlaylistById = (id) => api.delete(`playlist/${id}`);
+export const createPlaylist = (payload) => api.post('playlist', payload);
+export const updatePlaylistById = (id, payload) => api.put(`playlist/${id}`, payload);
+export const getPlaylistById = (id) => api.get(`/playlist/${id}`);
 
 const apis = {
-    getAllPlaylists,
-    getPlaylistPairs,
-    getPlaylistById,
-}
+  getAllPlaylists,
+  getPlaylistPairs,
+  deletePlaylistById,
+  createPlaylist,
+  updatePlaylistById,
+  getPlaylistById,
+};
 
-export default apis
+export default apis;
