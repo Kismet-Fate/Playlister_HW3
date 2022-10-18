@@ -10,57 +10,64 @@ import { useHistory } from 'react-router-dom'
 function EditToolbar() {
     const { store } = useContext(GlobalStoreContext);
     const history = useHistory();
-
-    let enabledButtonClass = "playlister-button";
-
+  
+    let enabledButtonClass = 'playlister-button';
+  
+    const handleAddSong = () => {
+      store.addAddSongTransaction();
+    };
     function handleUndo() {
-        store.undo();
+      store.undo();
     }
     function handleRedo() {
-        store.redo();
+      store.redo();
     }
     function handleClose() {
-        history.push("/");
-        store.closeCurrentList();
+      history.push('/');
+      store.closeCurrentList();
     }
+    /*
     let editStatus = false;
     if (store.isListNameEditActive) {
         editStatus = true;
     }
+    */
     return (
-        <span id="edit-toolbar">
+        <span id='edit-toolbar'>
             <input
-                type="button"
+                type='button'
                 id='add-song-button'
-                disabled={editStatus}
-                value="+"
+                disabled={!store.hasCurrentList()}
+                value='+'
                 className={enabledButtonClass}
+                onClick={handleAddSong}
             />
             <input
-                type="button"
+                type='button'
                 id='undo-button'
-                disabled={editStatus}
-                value="⟲"
+                disabled={!store.canUndo()}
+                value='⟲'
                 className={enabledButtonClass}
                 onClick={handleUndo}
             />
             <input
-                type="button"
+                type='button'
                 id='redo-button'
-                disabled={editStatus}
-                value="⟳"
+                disabled={!store.canRedo()}
+                value='⟳'
                 className={enabledButtonClass}
                 onClick={handleRedo}
             />
             <input
-                type="button"
+                type='button'
                 id='close-button'
-                disabled={editStatus}
-                value="&#x2715;"
+                disabled={!store.hasCurrentList()}
+                value='&#x2715;'
                 className={enabledButtonClass}
                 onClick={handleClose}
             />
-        </span>);
+        </span>
+    );
 }
 
 export default EditToolbar;
