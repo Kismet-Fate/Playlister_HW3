@@ -10,21 +10,21 @@ import { useHistory } from 'react-router-dom'
 function EditToolbar() {
     const { store } = useContext(GlobalStoreContext);
     const history = useHistory();
-  
+
     let enabledButtonClass = 'playlister-button';
-  
+
     const handleAddSong = () => {
-      store.addAddSongTransaction();
+        store.addAddSongTransaction();
     };
     function handleUndo() {
-      store.undo();
+        store.undo();
     }
     function handleRedo() {
-      store.redo();
+        store.redo();
     }
     function handleClose() {
-      history.push('/');
-      store.closeCurrentList();
+        history.push('/');
+        store.closeCurrentList();
     }
     /*
     let editStatus = false;

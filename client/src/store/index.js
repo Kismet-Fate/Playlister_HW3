@@ -264,7 +264,7 @@ export const useGlobalStore = () => {
     };
 
     store.createNewList = () => {
-        const playlist = { name: 'untitled', songs: [] };
+        const playlist = { name: 'Untitled-' + (store.newListCounter++ +1), songs: [] };
         const asyncCreateNewList = async () => {
             const response = await api.createPlaylist(playlist);
             if (response.data.success) {
