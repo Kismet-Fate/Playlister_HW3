@@ -1,10 +1,10 @@
 import { createContext, useState } from 'react';
 import jsTPS, { jsTPS_Transaction } from '../common/jsTPS';
 import api from '../api';
-import AddSong_Transaction from '../transactions/AddSong_Transaction';
-import DeleteSong_Transaction from '../transactions/DeleteSong_Transaction';
-import MoveSong_Transaction from '../transactions/MoveSong_Transaction';
-import EditSong_Transaction from '../transactions/EditSong_Transaction';
+import AddSong_Transaction from '../Transactions/AddSong_Transaction';
+import DeleteSong_Transaction from '../Transactions/DeleteSong_Transaction';
+import MoveSong_Transaction from '../Transactions/MoveSong_Transaction';
+import EditSong_Transaction from '../Transactions/EditSong_Transaction';
 export const GlobalStoreContext = createContext({});
 /*
     This is our global data store. Note that it uses the Flux design pattern,
